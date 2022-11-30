@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Dropper : MonoBehaviour
 {
+    bool drop = false;
+    public bool Drop { get => drop; set => drop = value; }
+
     MeshRenderer renderer;
     Rigidbody rbody;
     [SerializeField] float timeToWait = 5f;
@@ -24,11 +28,12 @@ public class Dropper : MonoBehaviour
         float timer = Time.time;
               
 
-        if(timer > timeToWait)
+        if(timer > timeToWait && gameObject.tag != "Drop")
         {            
             renderer.enabled = true;
             
             rbody.useGravity = true;
         }
+        
     }
 }
